@@ -185,7 +185,7 @@ namespace ArrayExcercise
             string[] dragonLargeSmall = new string[2];
             for (int dragon = 0; dragon < 3; dragon++)
             {
-                Console.WriteLine("What dragon ate today?");
+                Console.WriteLine("Which dragon ate today?");
                 Console.WriteLine($"Their names are {dragonNames[0]}, {dragonNames[1]}, and {dragonNames[2]}");
                 dragonNames[dragon] = Console.ReadLine();
                 for (int day = 0; day < 7; day++)
