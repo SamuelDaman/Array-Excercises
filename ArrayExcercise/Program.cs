@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ArrayExcercise
 {
-    /*class Initializing
+   /* class Initializing
     {
         static int[] data = new int[10];
         static void Main()
@@ -180,8 +180,7 @@ namespace ArrayExcercise
             int dragonEaten = 0;
             float foodEaten = 0;
             float foodTotal = 0;
-            int[] nums = new int[21];
-            int[] largeSmall = new int[2] { 0, 0 };
+            int[] largeSmall = new int[2] { int.MaxValue, int.MinValue };
             string[] dragonLargeSmall = new string[2];
             for (int dragon = 0; dragon < 3; dragon++)
             {
@@ -194,20 +193,15 @@ namespace ArrayExcercise
                     int.TryParse(Console.ReadLine(), out dragonEaten);
                     food[dragon, day] = dragonEaten;
                     foodEaten += dragonEaten;
-                    nums[dragon + day] = dragonEaten;
-                    if (day == 0)
+                    food[dragon, day] = dragonEaten;
+                    if (largeSmall[0] > food[dragon, day])
                     {
-                        largeSmall[0] = nums[0];
-                        largeSmall[1] = nums[0];
-                    }
-                    if (largeSmall[0] > nums[dragon + day])
-                    {
-                        largeSmall[0] = nums[dragon + day];
+                        largeSmall[0] = food[dragon, day];
                         dragonLargeSmall[0] = dragonNames[dragon];
                     }
-                    if (largeSmall[1] < nums[dragon + day])
+                    if (largeSmall[1] < food[dragon, day])
                     {
-                        largeSmall[1] = nums[dragon + day];
+                        largeSmall[1] = food[dragon, day];
                         dragonLargeSmall[1] = dragonNames[dragon];
                     }
                 }
@@ -215,10 +209,10 @@ namespace ArrayExcercise
                 foodTotal += foodEaten;
                 foodEaten = 0;
             }
-            Console.WriteLine($"{dragonNames[0]}, {dragonNames[1]}, and {dragonNames[2]} have eaten a total {foodTotal}. Their average food eaten is {foodTotal / 7}");
+            Console.WriteLine($"{dragonNames[0]}, {dragonNames[1]}, and {dragonNames[2]} have eaten a total of {foodTotal}. Their average food eaten is {foodTotal / 7}");
 
             Console.WriteLine($"The smallest amount eaten is {largeSmall[0]} and {dragonLargeSmall[0]} ate that much.");
-            Console.WriteLine($"Your largest number is {largeSmall[1]} and {dragonLargeSmall[1]} ate that much.");
+            Console.WriteLine($"The largest amount eaten is {largeSmall[1]} and {dragonLargeSmall[1]} ate that much.");
             Console.ReadLine();
         }
     }
